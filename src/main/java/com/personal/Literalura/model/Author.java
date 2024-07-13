@@ -11,27 +11,36 @@ public class Author {
     @Id
     @Column(name = "author_id")
     private final UUID authorId = UUID.randomUUID();
+    @Column(name = "book_id")
+    private String bookId;
     @Column(name = "name")
     private String name;
     @Column(name = "birth_year")
     private String birthYear;
     @Column(name = "death_year")
     private String deathYear;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     private List<Book> books;
 
     public Author() {
     }
 
-    public Author(String name, String birthYear, String deathYear, List<Book> books) {
+    public Author(String name, String birthYear, String deathYear) {
         this.name = name;
         this.birthYear = birthYear;
         this.deathYear = deathYear;
-        this.books = books;
     }
 
     public UUID getAuthorId() {
         return authorId;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public String getName() {
@@ -64,5 +73,15 @@ public class Author {
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", name='" + name + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", deathYear='" + deathYear + '\'' +
+                '}';
     }
 }
