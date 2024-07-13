@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AuthorApiDTO {
+public class AuthorsDTO {
+
     @JsonAlias("name")
     private String name;
     @JsonAlias("birth_year")
@@ -12,7 +13,10 @@ public class AuthorApiDTO {
     @JsonAlias("death_year")
     private String deathYear;
 
-    public AuthorApiDTO(String name, String birthYear, String deathYear) {
+    public AuthorsDTO() {
+    }
+
+    public AuthorsDTO(String name, String birthYear, String deathYear) {
         this.name = name;
         this.birthYear = birthYear;
         this.deathYear = deathYear;
@@ -40,5 +44,14 @@ public class AuthorApiDTO {
 
     public void setDeathYear(String deathYear) {
         this.deathYear = deathYear;
+    }
+
+    @Override
+    public String toString() {
+        return "AuthorsDTO{" +
+                "name='" + name + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", deathYear='" + deathYear + '\'' +
+                '}';
     }
 }
